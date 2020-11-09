@@ -1,4 +1,4 @@
-if [[ -z "$1" || "$1" = "phnx" ]]; then
+if [[ -z "$1" || "$1" = "rpgmanager" ]]; then
     cd /app
 
     if [[ "${ENV}" = "production" ]]; then

@@ -18,7 +18,7 @@ services:
 
   svc:
     build: .
-    # image: phnx
+    # image: ajordan/rpgmanager
     environment:
       # ENV: production or development
       - ENV=development

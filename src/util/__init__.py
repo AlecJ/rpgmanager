@@ -105,7 +105,7 @@ def loggingFactory(module):
     """        
 
     def getLogger(method=None):
-        name = "phnx." + (module if method is None else module + "." + method)
+        name = "rpgmanager." + (module if method is None else module + "." + method)
         return logging.getLogger(name)
 
     return getLogger
