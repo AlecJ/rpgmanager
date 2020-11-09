@@ -1,7 +1,7 @@
 from flask import request
 from util import session_scope, loggingFactory
 from sqlalchemy import exc
-from rpgmanager.db import RPGManagerCampaign, RPGManagerCharacter
+from model.db import RPGManagerCampaign, RPGManagerCharacter
 from util.id_generator import generate_random_string
 from datetime import datetime
 
