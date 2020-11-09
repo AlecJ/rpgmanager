@@ -1,0 +1,10 @@
+.container {
+    position: absolute;
+    overflow: hidden;
+    z-index: 2;
+
+    -webkit-transition: all 0.75s ease;
+    -o-transition: all 0.75s ease;
+    -moz-transition: all 0.75s ease;
+    transition: all 0.75s ease;
+}

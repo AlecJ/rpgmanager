@@ -1,0 +1,265 @@
+.container {
+    background-image: url('/assets/dark-noise.png');
+    background-attachment: fixed;
+    height: 80vh;
+    min-height: 620px;
+    overflow: hidden;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    .scrollContainer::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollContainer {
+        height: 100%;
+        width: 100%;
+        overflow-x: scroll;
+        scrollbar-width: none;
+        overflow-y: hidden;
+        padding: 1vh 0.2vw;
+        display: flex;
+        // justify-content: flex-start;
+        // align-items: center;
+
+        .playerContainer {
+            height: 78vh;
+            min-height: 600px;
+            min-width: 240px;
+            width: 16.2vw;
+            margin: 0 0.2vw;
+            padding: 1vh 0;
+            background: #efefef;
+            border-radius: 10px;
+    
+            .playerName {
+                height: 6%;
+                display: flex;
+                justify-content: center;
+    
+                .formControl {
+                    height: 50px;
+                    font-size: 1.1rem;
+                    font-weight: bold;
+                    line-height: 2;
+                    overflow: hidden;
+                    margin: 0;
+                }
+            }
+    
+            .playerPic {
+                height: 20%;
+            }
+    
+            .playerMoney {
+                height: 10%;
+                text-align: center;
+                margin: auto;
+                max-width: 280px;
+                max-height: 80px;
+    
+                p {
+                    margin: 0;
+                }
+    
+                .currencyIcons,
+                .currentMoney,
+                .deltaMoney {
+                    height: 35%;
+    
+                    display: flex;
+                    justify-content: left;
+    
+                    * {
+                        height: 100%;
+                        width: 20%;
+                        max-width: 60px;
+                        margin: 0;
+                        font-size: 16px;
+                        padding: 4px;
+                        text-align: center;
+                    }
+    
+                    .gold {
+                        min-width: 44px;
+                    }
+                }
+    
+                .currencyIcons {
+                    div {
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .goldIcon,
+                    .silverIcon,
+                    .copperIcon {
+                        background-repeat: no-repeat;
+                        background-size: auto 100%;
+                        background-image: url('/assets/dnd/currency.png');
+                        background-clip: content-box;
+                        width: 28px;
+                        height: 24px;
+                        padding: 0 1px;
+                    }
+                    .goldIcon {
+                        background-position: -22px 0;
+                    }
+                    .silverIcon {
+                        background-position: -72px 0;
+                    }
+                    .copperIcon {
+                        background-position: -97px 0;
+                    }
+                }
+    
+                .deltaMoney {
+                    .calcBtn {
+                        width: 20%;
+                        max-width: 32px;
+    
+                        padding: 0;
+                        margin: 0 0 0 4px;
+    
+                        display: flex;
+                        justify-content: center;
+    
+                        img {
+                            width: 16px;
+                        }
+                    }
+                }
+            }
+    
+            .playerItems,
+            .playerNotes {
+                height: 32%;
+    
+                p {
+                    height: 10%;
+                    margin: 0;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+.playerDelete {
+    position: relative;
+    top: -20px;
+    margin-bottom: -20px;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+
+    Button {
+        position: relative;
+        padding: 2px 7px 2px 9px;
+        right: 16px;
+
+    }
+
+    img {
+        top: -5px;
+        width: 16px;
+    }
+}
+
+.formControl {
+    width: 96%;
+    height: 86%;
+    margin: 2% 2%;
+    padding: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    resize: none;
+}
+
+.addPlayerButtonContainer {
+    display: flex;
+    width: 16.2vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .addPlayerButton {
+        margin: auto;
+        height: 15vh;
+        width: 15vh;
+        background: rgba(255, 255, 255, 0.87);
+        position: relative;
+        border-radius: 30px;
+
+        img {
+            width: 60%;
+        }
+    }
+}
+
+.classPic {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center top;
+}
+
+.classPic.missing {
+    background-size: contain;
+    background-image: url('/assets/dnd/question.png');
+}
+
+.classPic.barbarian {
+    background-image: url('/assets/dnd/barbarian.png');
+}
+
+.classPic.bard {
+    background-image: url('/assets/dnd/bard.png');
+}
+
+.classPic.cleric {
+    background-image: url('/assets/dnd/cleric.png');
+}
+
+.classPic.druid {
+    background-image: url('/assets/dnd/druid.png');
+}
+
+.classPic.fighter {
+    background-image: url('/assets/dnd/fighter.png');
+}
+
+.classPic.monk {
+    background-image: url('/assets/dnd/monk.png');
+}
+
+.classPic.paladin {
+    background-image: url('/assets/dnd/paladin.png');
+}
+
+.classPic.ranger {
+    background-image: url('/assets/dnd/ranger.png');
+}
+
+.classPic.rogue {
+    background-image: url('/assets/dnd/rogue.png');
+}
+
+.classPic.sorcerer {
+    background-image: url('/assets/dnd/sorcerer.png');
+}
+
+.classPic.warlock {
+    background-image: url('/assets/dnd/warlock.png');
+}
+
+.classPic.wizard {
+    background-image: url('/assets/dnd/wizard.png');
+}

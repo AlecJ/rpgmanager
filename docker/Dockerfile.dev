@@ -1,0 +1,44 @@
+# build react ui
+FROM node:13.12.0-alpine as ui-build
+WORKDIR /ui
+ENV PATH /ui/node_modules/.bin:$PATH
+COPY ./ui/package.json .
+COPY ./ui/package-lock.json .
+RUN npm install --silent
+COPY ./ui/src ./src
+COPY ./ui/public ./public
+RUN npm run build
+
+# build flask app with uWSGI
+FROM python:3.8-alpine
+RUN apk update && apk add libpq openssl-dev
+RUN apk add --virtual .build-deps gcc libxml2-dev libxslt-dev libressl-dev libffi-dev freetds-dev python3-dev musl-dev linux-headers postgresql-dev
+WORKDIR /app
+COPY --from=ui-build /ui/build ./ui
+
+# Install dependencies
+COPY requirements.txt .
+# Cython needed first
+RUN pip install Cython==0.29.21
+RUN pip install -r requirements.txt
+RUN apk del .build-deps
+
+# Copy project files
+COPY uwsgi.ini .
+COPY config.ini.SAMPLE ./config.ini
+COPY build.py .
+COPY migrations ./migrations/
+COPY src ./src/
+
+ENV CONFIG_PATH /app/config.ini
+ENV ENV production
+ENV PORT 5000
+EXPOSE 5000
+
+# entry commands
+COPY entry.sh /
+COPY entry.d /entry.d/
+RUN chmod 0755 /entry.sh
+
+ENTRYPOINT ["/entry.sh"]
+CMD ["rpgmanager"]

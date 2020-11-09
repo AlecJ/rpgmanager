@@ -1,0 +1,37 @@
+[database]
+db_dev_url = postgresql+psycopg2://postgres:secret@pgsql:5432/<DATABASE_NAME>
+# heroku
+db_prod_url = 
+
+[api]
+open_weather_api_key = 
+latitude = 
+longitude = 
+
+# Boston
+# latitude = 42.35843
+# longitude = -71.05977
+
+[loggers]
+keys = root
+
+[handlers]
+keys = console
+
+[formatters]
+keys = generic
+
+[logger_root]
+level = DEBUG
+handlers = console
+formatter = generic
+
+[handler_console]
+class = StreamHandler
+args = (sys.stderr,)
+;level = NOTSET
+formatter = generic
+
+[formatter_generic]
+format = %(asctime)s %(levelname)-5.5s [%(name)s] %(message)s
+datefmt = %H:%M:%S

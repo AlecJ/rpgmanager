@@ -1,0 +1,43 @@
+version: "3"
+
+volumes:
+  pgdata:
+
+services:
+  pgsql:
+    image: postgres:11.7
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    expose:
+      - 5432
+
+  svc:
+    build: .
+    # image: phnx
+    environment:
+      # ENV: production or development
+      - ENV=development
+    volumes:
+      # edit the app on the fly
+      - ./src:/app/src
+      # edit config.ini on the fly
+      - ./config.ini:/app/config.ini
+      # edit uwsgi.ini on the fly
+      - ./uwsgi.ini:/app/uwsgi.ini
+      # migrations folder
+      - ./migrations:/app/migrations
+      # add build.py for testing
+      - ./build.py:/app/build.py
+      - ./coverage_report:/app/coverage_report
+      - .coveragerc:/app/.coveragerc
+    ports:
+      - "5000:5000"
+    networks:
+      - default
+    depends_on:
+      - pgsql
