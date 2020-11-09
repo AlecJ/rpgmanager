@@ -1,0 +1,9 @@
+*__pycache__
+.pytest_cache
+.vscode
+coverage_report
+.coverage
+coverage
+venv
+env
+config.ini

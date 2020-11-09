@@ -1,0 +1,21 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -f docker/Dockerfile.dev -t ajordan/rpgmanager .
+
+script:
+    - docker run ajordan/rpgmanager test
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "rpgmanager"
+    env: "Rpgmanager-env"
+    bucket_name: "elasticbeanstalk-us-east-1-385112840299"
+    bucket_path: "rpgmanager"
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    on:
+        branch: master
